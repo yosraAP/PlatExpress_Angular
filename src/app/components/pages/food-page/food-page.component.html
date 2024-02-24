@@ -1,0 +1,37 @@
+<app-not-found
+  [visible]="!food.id"
+  notFoundMessage="Food Not Found"
+  resetLinkText="Back To Homepage">
+</app-not-found>
+<div *ngIf="food.id" class="container h-100">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-12 col-lg-6">
+      <img [src]="food.imageUrl" [alt]="food.name" class="img-fluid rounded-start"/>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="details">
+        <div class="header d-flex justify-content-between align-items-center">
+          <h2 class="name">{{ food.name }}</h2>
+          <span class="favorite {{ food.favorite ? 'text-danger' : 'text-secondary' }}">❤</span>
+        </div>
+        <div class="rating my-3">
+          <!-- Composant star-rating -->
+        </div>
+        <div class="origins my-3">
+          <span *ngFor="let origin of food.origins" class="badge bg-secondary me-1">{{ origin }}</span>
+        </div>
+        <div class="tags my-3">
+          <a *ngFor="let tag of food.tags" routerLink="/tag/{{tag}}" class="btn btn-outline-primary btn-sm me-1">{{ tag }}</a>
+        </div>
+        <div class="cook-time my-2">
+          <strong>Time to cook:</strong> {{ food.cookTime }} minutes
+        </div>
+        <div class="price my-3">
+          <h3>{{ food.price | currency }}</h3>
+        </div>
+        <button (click)="addToCart()" class="btn btn-danger btn-lg">Add To Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+

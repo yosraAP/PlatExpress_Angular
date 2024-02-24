@@ -1,0 +1,5 @@
+  <div class="input-group mb-3 ms-auto container mt-5 w-50">
+    <input #s type="text" class="form-control p-2 mx-2 mb-3" placeholder="Trouver un plat" aria-label="Trouver un plat" aria-describedby="button-addon2" (keyup.enter)="search(s.value)"
+    [value]="searchTerm">
+    <button class="btn btn-danger mb-3" (click)="search(s.value)" >Search</button>
+  </div>
